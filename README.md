@@ -64,6 +64,7 @@ For feedback, questions, or future updates:
 **Rolls Development**  
 🌐💬 Join My Discord -> [Rolls Development](https://discord.gg/Zh9xttbESm)  
 📧 dev.kingofrolls@gmail.com
+
 ![Downloads](https://img.shields.io/github/downloads/KingOfRolls-Dev/Metar_decoder/total?style=for-the-badge&color=8B0000&label=Downloads)
 
 ---
