@@ -18,8 +18,6 @@ Get the latest installer here:
 
 This is the only supported download location.
 
-> If SmartScreen appears, choose **More info → Run anyway**.
-
 ## 🛠️ Installation
 1. Run the installer.
 2. > If SmartScreen appears, choose **More info → Run anyway**.
