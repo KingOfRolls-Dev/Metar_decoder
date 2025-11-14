@@ -42,7 +42,7 @@ By downloading or installing the software, you acknowledge and accept the terms 
 For feedback, questions, or future updates:
 
 **Rolls Development**  
-🌐 rollsdevelopment.co (coming soon)  
+🌐💬 Join My Discord -> [rollsdevelopment.co](https://discord.gg/Zh9xttbESm)  
 📧 dev.kingofrolls@gmail.com
 
 ---
