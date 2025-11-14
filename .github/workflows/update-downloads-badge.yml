@@ -1,0 +1,87 @@
+name: Update downloads badge
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"  # every 6 hours
+  release:
+    types: [published, edited]
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Get total release downloads
+        id: downloads
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Get all releases
+            const releases = await github.paginate(
+              github.rest.repos.listReleases,
+              { owner, repo }
+            );
+
+            let total = 0;
+            for (const rel of releases) {
+              if (!rel.assets) continue;
+              for (const asset of rel.assets) {
+                if (asset.download_count) {
+                  total += asset.download_count;
+                }
+              }
+            }
+
+            core.info(`Total downloads: ${total}`);
+            core.setOutput('count', String(total));
+
+      - name: Generate downloads badge SVG
+        run: |
+          COUNT="${{ steps.downloads.outputs.count }}"
+
+          cat > downloads-badge.svg << 'EOF'
+          <svg xmlns="http://www.w3.org/2000/svg" width="190" height="28" role="img" aria-label="Downloads: COUNT_PLACEHOLDER">
+            <linearGradient id="smooth" x2="0" y2="100%">
+              <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+              <stop offset="1" stop-opacity=".1"/>
+            </linearGradient>
+
+            <mask id="round">
+              <rect width="190" height="28" rx="4" fill="#fff"/>
+            </mask>
+
+            <g mask="url(#round)">
+              <!-- left side (label) -->
+              <rect width="100" height="28" fill="#555"/>
+              <!-- right side (value) in Rolls red -->
+              <rect x="100" width="90" height="28" fill="#8B0000"/>
+              <rect width="190" height="28" fill="url(#smooth)"/>
+            </g>
+
+            <g fill="#fff" text-anchor="middle"
+               font-family="Verdana, DejaVu Sans, sans-serif"
+               font-size="12">
+              <!-- label text -->
+              <text x="50" y="18">Downloads</text>
+              <!-- value text -->
+              <text id="count-text" x="145" y="18">COUNT_PLACEHOLDER</text>
+            </g>
+          </svg>
+          EOF
+
+          # Replace placeholder with actual count
+          sed -i "s/COUNT_PLACEHOLDER/$COUNT/g" downloads-badge.svg
+
+      - name: Commit badge if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update downloads badge"
+          file_pattern: downloads-badge.svg
