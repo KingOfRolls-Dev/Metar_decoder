@@ -19,6 +19,20 @@ All rights to the software are retained by **Rolls Development**.
 4. Launch **METAR Decoder** via your Start Menu or desktop shortcut.
 
 ---
+## 📸 Screenshots
+
+### Main Interface
+![Main Interface](screenshots/Main_UI.png)
+
+### Answers View
+![Answers View](screenshots/Answer_Section.png)
+
+### Results
+![Results](screenshots/Results_Section.png)
+
+> Additional images are available in the [`/screenshots`](screenshots/) directory.
+
+---
 
 ## 🔒 Security & Integrity
 This software is distributed in compiled binary form only.
