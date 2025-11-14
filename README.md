@@ -10,11 +10,19 @@ No source code is included in this repository.
 All rights to the software are retained by **Rolls Development**.
 
 ---
+## 📥 Download
+
+Get the latest installer here:
+
+👉 **[Download METAR Decoder (Latest Release)](https://github.com/KingOfRolls-Dev/Metar_decoder/releases/latest)**
+
+This is the only supported download location.
+
+> If SmartScreen appears, choose **More info → Run anyway**.
 
 ## 🛠️ Installation
-1. Download the installer:  
-   **`METAR_Decoder_Setup.exe`**
-2. Run the installer.
+1. Run the installer.
+2. > If SmartScreen appears, choose **More info → Run anyway**.
 3. Follow the on-screen prompts.
 4. Launch **METAR Decoder** via your Start Menu or desktop shortcut.
 
